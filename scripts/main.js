@@ -3,7 +3,8 @@ var angryMessage = document.querySelector(".Angry_Message")
 var messageArray = []
 
 function send_message() {
-  let message = new Message(prompt("What's your message?"), new Date)
+  let userInput = document.querySelector('.user_input').value; 
+  let message = new Message(userInput, new Date)
 
   messageArray.unshift(message)
   
