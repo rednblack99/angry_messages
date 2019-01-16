@@ -3,21 +3,30 @@ var angryMessage = document.querySelector(".Angry_Message")
 var messageArray = []
 
 function send_message() {
-  let message = prompt("What's your message?");
-  
-  var d = new Date();
-  var timeStamp = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-d.getHours() + ":" + d.getMinutes();
+  let message = new Message(prompt("What's your message?"), new Date)
 
   messageArray.unshift(message)
   
   var printThis = "Your messages: <br>"
   messageArray.forEach(function(message) {
-    printThis += "<br> Message: " + message + " <br> Sent at: " + timeStamp + "<br>";
+    printThis += "<br> Message: " + message.content + " <br> Sent at: " + message.createdAt + "<br>";
   })
   angryMessage.innerHTML = printThis
 }
 
 angryButton.onclick = function() {
   send_message();
+}
+
+class Message {
+  constructor(content, createdAt){
+    this.content = content;
+    this.createdAt = createdAt;
+  }
+
+  // timeStamp(createdAt) {
+  //   return this.createdAt.getDate()  + "-" + (this.createdAt.getMonth()+1) + "-" + this.createdAt.getFullYear() + " " +
+  //   this.createdAt.getHours() + ":" + this.createdAt.getMinutes();
+  // }
+
 }
