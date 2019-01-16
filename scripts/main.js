@@ -1,19 +1,23 @@
-var AngryButton = document.querySelector(".Send_Message")
-var AngryMessage = document.querySelector(".Angry_Message")
+var angryButton = document.querySelector(".Send_Message")
+var angryMessage = document.querySelector(".Angry_Message")
+var messageArray = []
 
 function send_message() {
   let message = prompt("What's your message?");
-  localStorage.setItem("message", message);
-  AngryMessage.textContent = "Your message: " + message;
+  
+  var d = new Date();
+  var timeStamp = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
+d.getHours() + ":" + d.getMinutes();
+
+  messageArray.unshift(message)
+  
+  var printThis = "Your messages: <br>"
+  messageArray.forEach(function(message) {
+    printThis += "<br> Message: " + message + " <br> Sent at: " + timeStamp + "<br>";
+  })
+  angryMessage.innerHTML = printThis
 }
 
-// if(!localStorage.getItem('message')) {
-//   sendMessage();
-// } else {
-//   let storedMessage = localStorage.getItem('message');
-//   Angry_Message.textContent = "Hello, " + storedMessage;
-// }
-
-AngryButton.onclick = function() {
+angryButton.onclick = function() {
   send_message();
 }
