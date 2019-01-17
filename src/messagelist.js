@@ -5,10 +5,6 @@ class MessageBoard {;
     this.messagelist = [];
   }
 
-  getMessageList() {
-    return this.messagelist
-  }
-
   saveMessage(userInput) {
     var message = new Message(userInput, new Date, messageId);
     this.messagelist.push(message);
