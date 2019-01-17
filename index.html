@@ -10,17 +10,27 @@
     <p> Let your anger out by posting all your grumpy thoughts 
       here instead of sending them to your friends </p>
       
-    <form id="form">
+    <form class="form">
       <input type="text" class="user_input" placeholder="Leave a message">
       <button class="Send_Message" type="button">IGOR! Write this down!</button>
     </form>
-    <br>
-    <button class="Edit" type="button"> Edit a message </button>
-    
+        
     <p class="Angry_Message"> </p>
 
+    <div class="CRUD">
+    <form class="edit_form">
+        <input type="text" class="messageNum" placeholder="Enter message number">
+        <input type="text" class="newContent" placeholder="New message?">
+        <button class="Edit" type="button"> Edit a message </button>
+    </form>
+    
+    <br>
+
     <button class="Delete" type="button">IGOR! Burn these messages!</button>
-  
-    <script src="scripts/main.js" ></script>
+    </div>
+
+    <script src="src/messagelist.js"></script>
+    <script src="src/main.js" ></script>
+    <script src="src/message.js" ></script>
   </body>
 </html>
