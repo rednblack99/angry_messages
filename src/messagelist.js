@@ -1,18 +1,23 @@
+var messageId = 1
+
 class MessageBoard {;
   constructor(){;
     this.messagelist = [];
-  }
-
-  add(message){
-    return this.messagelist.push(message)
   }
 
   getMessageList() {
     return this.messagelist
   }
 
+  saveMessage(userInput) {
+    var message = new Message(userInput, new Date, messageId);
+    this.messagelist.push(message);
+    messageId += 1
+  }
+
   clearMessageList() {
     this.messagelist = []
+    messageId = 1
   }
 
   prepareForPrint() {
@@ -22,5 +27,10 @@ class MessageBoard {;
       printThis += "<br> Message: " + message.content + " <br> Sent at: " + message.timeStamp() + "<br>" + "Message Number: " + message.id + "<br>";
     })
     return printThis  
+  }
+
+  editMessage(messageNum, newContent) {
+    var toEdit = this.messagelist[(messageNum-1)]
+    toEdit.content = newContent
   }
 }
